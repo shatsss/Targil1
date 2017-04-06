@@ -1,34 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SearchAlgorithmsLib;
 using MazeLib;
-using MazeGeneratorLib;
+using SearchAlgorithmsLib;
+
 
 namespace Ass1
 {
-    public class ObjectAdapter<Position> : ISearchable<Position>
+    public class ObjectAdapter : ISearchable<Position>
     {
         private Maze maze;
-        public ObjectAdapter()
+        public ObjectAdapter(Maze maze)
         {
-            this.maze = new Maze();
+            this.maze = maze;
         }
         public State<Position> getGoalState()
         {
-            //Position position = this.maze.
-            State<Position> state = new State<Position>();
-            return null;
+            return new State<Position>(maze.GoalPos);
         }
         public State<Position> getInitialState()
         {
-            return null;
+            return new State<Position>(maze.InitialPos);
         }
         public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
-
             return null;
         }
     }
