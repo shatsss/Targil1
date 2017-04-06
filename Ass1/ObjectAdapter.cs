@@ -9,24 +9,27 @@ using MazeGeneratorLib;
 
 namespace Ass1
 {
-    public class ObjectAdapter<T> : ISearchable<T>
+    public class ObjectAdapter<Position> : ISearchable<Position>
     {
         private Maze maze;
         public ObjectAdapter()
         {
             this.maze = new Maze();
         }
-        public List<State<T>> getAllPossibleStates(State<T> s)
+        public State<Position> getGoalState()
+        {
+            //Position position = this.maze.
+            State<Position> state = new State<Position>();
+            return null;
+        }
+        public State<Position> getInitialState()
         {
             return null;
         }
-        public State<T> getGoalState()
+        public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
+
             return null;
-        }
-        public State<T> getInitialState()
-        {
-             return null;
         }
     }
 }

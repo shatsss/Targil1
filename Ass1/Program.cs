@@ -10,6 +10,7 @@ namespace Ass1
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
