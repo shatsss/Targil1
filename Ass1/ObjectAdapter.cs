@@ -23,7 +23,36 @@ namespace Ass1
         }
         public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
-            return null;
+            List<State<Position>> neighbours = new List<State<Position>>();
+            int i = s.getPosition().Row;
+            int j = s.getPosition().Col;
+            Position position;
+            if (i + 1 < maze.Rows && maze[i + 1, j] == CellType.Free)
+            {
+                position = new Position(i + 1, j);
+                addToNeighbours(position, neighbours);
+            }
+            if (i > 0 && maze[i - 1, j] == CellType.Free)
+            {
+                position = new Position(i - 1, j);
+                addToNeighbours(position, neighbours);
+            }
+            if (j + 1 < maze.Cols && maze[i, j + 1] == CellType.Free)
+            {
+                position = new Position(i, j + 1);
+                addToNeighbours(position, neighbours);
+            }
+            if (j > 0 && maze[i, j - 1] == CellType.Free)
+            {
+                position = new Position(i, j - 1);
+                addToNeighbours(position, neighbours);
+            }
+            return neighbours;
+        }
+        private void addToNeighbours(Position position, List<State<Position>> neighbours)
+        {
+            State<Position> state = new State<Position>(position);
+            neighbours.Add(state);
         }
     }
 }

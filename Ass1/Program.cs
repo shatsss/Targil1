@@ -18,7 +18,7 @@ namespace Ass1
         public static void CompareSolvers()
         {
             DFSMazeGenerator mazeGenerator = new DFSMazeGenerator();
-            Maze maze = mazeGenerator.Generate(15, 15);
+            Maze maze = mazeGenerator.Generate(10, 10);
             Console.WriteLine(maze.ToString());
             ISearchable<Position> mazeObjectAdapter = new ObjectAdapter(maze);
             ISearcher<Position> BFS = new BFS<Position>();
