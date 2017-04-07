@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MazeLib;
 using SearchAlgorithmsLib;
 
-
 namespace Ass1
 {
     public class ObjectAdapter : ISearchable<Position>
@@ -30,29 +29,35 @@ namespace Ass1
             if (i + 1 < maze.Rows && maze[i + 1, j] == CellType.Free)
             {
                 position = new Position(i + 1, j);
-                addToNeighbours(position, neighbours);
+                addToNeighbours(s, position, neighbours);
             }
             if (i > 0 && maze[i - 1, j] == CellType.Free)
             {
                 position = new Position(i - 1, j);
-                addToNeighbours(position, neighbours);
+                addToNeighbours(s, position, neighbours);
             }
             if (j + 1 < maze.Cols && maze[i, j + 1] == CellType.Free)
             {
                 position = new Position(i, j + 1);
-                addToNeighbours(position, neighbours);
+                addToNeighbours(s, position, neighbours);
             }
             if (j > 0 && maze[i, j - 1] == CellType.Free)
             {
                 position = new Position(i, j - 1);
-                addToNeighbours(position, neighbours);
+                addToNeighbours(s, position, neighbours);
             }
             return neighbours;
         }
-        private void addToNeighbours(Position position, List<State<Position>> neighbours)
+        private void addToNeighbours(State<Position> stateOriginal, Position position, List<State<Position>> neighbours)
         {
             State<Position> state = new State<Position>(position);
+            state.Cost = stateOriginal.Cost + 1;
+            state.Parent = stateOriginal;
             neighbours.Add(state);
+        }
+        public float betterDiraction(State<Position> state, State<Position> state2)
+        {
+            return state.Cost + 1;
         }
     }
 }
