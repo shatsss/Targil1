@@ -14,11 +14,13 @@ namespace Ass1
         }
         public State<Position> getGoalState()
         {
-            return new State<Position>(maze.GoalPos);
+            return State<Position>.StatePool.GetState(maze.GoalPos);
+          //  return new State<Position>(maze.GoalPos);
         }
         public State<Position> getInitialState()
         {
-            return new State<Position>(maze.InitialPos);
+            return State<Position>.StatePool.GetState(maze.InitialPos);
+            //return new State<Position>(maze.InitialPos);
         }
         public List<State<Position>> getAllPossibleStates(State<Position> s)
         {
@@ -50,9 +52,10 @@ namespace Ass1
         }
         private void addToNeighbours(State<Position> stateOriginal, Position position, List<State<Position>> neighbours)
         {
-            State<Position> state = new State<Position>(position);
+            State<Position> state= State<Position>.StatePool.GetState(position);
+           //  State<Position> state = new State<Position>(position);
             state.Cost = stateOriginal.Cost + 1;
-            state.Parent = stateOriginal;
+          //  state.Parent = stateOriginal;
             neighbours.Add(state);
         }
         public float betterDiraction(State<Position> state, State<Position> state2)
