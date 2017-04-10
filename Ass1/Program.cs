@@ -18,17 +18,17 @@ namespace Ass1
         public static void CompareSolvers()
         {
             DFSMazeGenerator mazeGenerator = new DFSMazeGenerator();
-            Maze maze = mazeGenerator.Generate(100,100);
+            Maze maze = mazeGenerator.Generate(3,3);
             Console.WriteLine(maze.ToString());
-            ISearchable<Position> mazeObjectAdapter = new ObjectAdapter(maze);
+            ISearchable<Position> mazeObjectAdapter = new MazeAdapter(maze);
             ISearcher<Position> BFS = new BFS<Position>();
             ISearcher<Position> DFS = new DFS<Position>();
-            Solution<Position> solution = BFS.search(mazeObjectAdapter);
+            Solution<Position> solution = BFS.Search(mazeObjectAdapter);
             Console.WriteLine("BFS solution: ");
-            solution.printSolution();
-            solution = DFS.search(mazeObjectAdapter);
+            solution.PrintSolution();
+            solution = DFS.Search(mazeObjectAdapter);
             Console.WriteLine("DFS solution: ");
-            solution.printSolution();
+            solution.PrintSolution();
             Console.ReadKey();
         }
     }
