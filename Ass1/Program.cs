@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MazeGeneratorLib;
 using MazeLib;
-using SearchAlgorithmsLib;
 
 namespace Ass1
 {
@@ -17,18 +16,24 @@ namespace Ass1
         }
         public static void CompareSolvers()
         {
+            int x = 8;
+            Console.WriteLine(x.ToString());
             DFSMazeGenerator mazeGenerator = new DFSMazeGenerator();
-            Maze maze = mazeGenerator.Generate(3,3);
+            Maze maze = mazeGenerator.Generate(100, 100);
+            //Console.WriteLine((int)MazeLib.Direction.Down);
             Console.WriteLine(maze.ToString());
             ISearchable<Position> mazeObjectAdapter = new MazeAdapter(maze);
             ISearcher<Position> BFS = new BFS<Position>();
             ISearcher<Position> DFS = new DFS<Position>();
             Solution<Position> solution = BFS.Search(mazeObjectAdapter);
-            Console.WriteLine("BFS solution: ");
-            solution.PrintSolution();
+            /*  Console.WriteLine("BFS solution: ");
+              solution.PrintSolution();*/
+            State<Position>.StatePool.ClearStatePool();
             solution = DFS.Search(mazeObjectAdapter);
-            Console.WriteLine("DFS solution: ");
-            solution.PrintSolution();
+            /*Console.WriteLine("DFS solution: ");
+            solution.PrintSolution();*/
+            Console.WriteLine("The Solution Is:");
+            mazeObjectAdapter.PrintSolution(solution);
             Console.ReadKey();
         }
     }
