@@ -5,7 +5,6 @@ using System.Text;
 
 namespace Ass1
 {
-
     /// <summary>
     /// Abstract class.
     /// </summary>

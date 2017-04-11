@@ -137,7 +137,7 @@ namespace Ass1
                 {
                     if (state.GetPosition().Col < state.Parent.GetPosition().Col)
                     {
-                        sb.Append(MazeLib.Direction.Left);
+                        //sb.Append(MazeLib.Direction.Left);
                         list2.Add((int)MazeLib.Direction.Left);
                     }
                     if (state.GetPosition().Col > state.Parent.GetPosition().Col)
@@ -157,11 +157,13 @@ namespace Ass1
                     }
                 }
             }
+            
             foreach (int i in list2)
             {
-                Console.Write(i);
+                sb.Append(i.ToString());
+                //Console.Write(i);
             }
-            return "aba";
+            return sb.ToString();
         }
     }
 }

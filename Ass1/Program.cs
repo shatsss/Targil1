@@ -33,7 +33,8 @@ namespace Ass1
             /*Console.WriteLine("DFS solution: ");
             solution.PrintSolution();*/
             Console.WriteLine("The Solution Is:");
-            mazeObjectAdapter.PrintSolution(solution);
+            string solutionn=mazeObjectAdapter.PrintSolution(solution);
+            Console.WriteLine(solutionn);
             Console.ReadKey();
         }
     }
