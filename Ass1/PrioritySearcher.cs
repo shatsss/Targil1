@@ -10,10 +10,9 @@ namespace Ass1
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="SearchAlgorithmsLib.ISearcher{T}" />
-    public abstract class PrioritySearcher<T> : ISearcher<T>
+    public abstract class PrioritySearcher<T> : AbstractSearchers<T>
     {
         private PriorityQueue<State<T>> openList;
-        private int evaluatedNodes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PrioritySearcher{T}"/> class.
@@ -72,16 +71,6 @@ namespace Ass1
             get { return openList.Count; }
         }
 
-
-        /// <summary>
-        /// Gets the number of nodes evaluated.
-        /// </summary>
-        /// <returns></returns>
-        public virtual int GetNumberOfNodesEvaluated()
-        {
-            return evaluatedNodes;
-        }
-
         /// <summary>
         /// Updates the item.
         /// </summary>
@@ -102,13 +91,6 @@ namespace Ass1
                 openList.Enqueue(s);
             }
         }
-
-        /// <summary>
-        /// Searches the specified searchable.
-        /// </summary>
-        /// <param name="searchable">The searchable.</param>
-        /// <returns></returns>
-        public abstract Solution<T> Search(ISearchable<T> searchable);
 
     }
 }

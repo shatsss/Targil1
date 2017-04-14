@@ -28,7 +28,7 @@ namespace Ass1
                 state = PopOpenList();
                 if (state.Equals(searchable.GetGoalState()))
                 {
-                    return GiveSolution<T>.BackTrace(state, this.GetNumberOfNodesEvaluated(), searchable.GetName());
+                    return BackTrace(state, this.GetNumberOfNodesEvaluated(), searchable.GetName());
                 }
                 hashSet.Add(state);
                 List<State<T>> succerssors = searchable.GetAllPossibleStates(state);

@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace Ass1
 {
-    /// <summary>
-    /// abstract class.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public abstract class GiveSolution<T>
+    public abstract class AbstractSearchers<T> : ISearcher<T>
     {
+        protected int evaluatedNodes;
+        /// <summary>
+        /// Gets the number of nodes evaluated.
+        /// </summary>
+        /// <returns></returns>
+        public virtual int GetNumberOfNodesEvaluated()
+        {
+            return evaluatedNodes;
+        }
+        /// <summary>
+        /// Searches the specified searchable.
+        /// </summary>
+        /// <param name="searchable">The searchable.</param>
+        /// <returns></returns>
+        public abstract Solution<T> Search(ISearchable<T> searchable);
         /// <summary>
         /// Backs the trace.
         /// </summary>
@@ -19,7 +30,7 @@ namespace Ass1
         /// <param name="numberOfNodesEvaluated">The number of nodes evaluated.</param>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        public static Solution<T> BackTrace(State<T> state, int numberOfNodesEvaluated, string name)
+        protected Solution<T> BackTrace(State<T> state, int numberOfNodesEvaluated, string name)
         {
             Stack<State<T>> openStack = new Stack<State<T>>();
             List<State<T>> openList = new List<State<T>>();
@@ -35,4 +46,5 @@ namespace Ass1
             return new Solution<T>(openList, numberOfNodesEvaluated, name);
         }
     }
+
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Sockets;
+
 
 namespace Ass1
 {
@@ -80,6 +82,10 @@ namespace Ass1
             //    {
             //      Console.WriteLine(i.ToString());
             //  }
+        }
+        public string ToJSON()
+        {
+            return "TOJSON SOLUTION";
         }
     }
 }

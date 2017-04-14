@@ -41,7 +41,7 @@ namespace Ass1
                 State<T> n = PopOpenList(); // inherited from Searcher, removes the best state
                 closed.Add(n);
                 if (n.Equals(searchable.GetGoalState()))
-                    return GiveSolution<T>.BackTrace(n, this.GetNumberOfNodesEvaluated(), searchable.GetName()); // private method, back traces through the parents
+                    return BackTrace(n, this.GetNumberOfNodesEvaluated(), searchable.GetName()); // private method, back traces through the parents
 
                 List<State<T>> succerssors = searchable.GetAllPossibleStates(n);
                 foreach (State<T> s in succerssors)

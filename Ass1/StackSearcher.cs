@@ -10,11 +10,9 @@ namespace Ass1
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="Ass1.ISearcher{T}" />
-    public abstract class StackSearcher<T> : ISearcher<T>
+    public abstract class StackSearcher<T> : AbstractSearchers<T>
     {
         private Stack<State<T>> openList;
-        private int evaluatedNodes;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StackSearcher{T}"/> class.
         /// </summary>
@@ -57,21 +55,5 @@ namespace Ass1
             evaluatedNodes++;
             return openList.Pop();
         }
-
-        /// <summary>
-        /// Gets the number of nodes evaluated.
-        /// </summary>
-        /// <returns></returns>
-        public virtual int GetNumberOfNodesEvaluated()
-        {
-            return evaluatedNodes;
-        }
-
-        /// <summary>
-        /// Searches the specified searchable.
-        /// </summary>
-        /// <param name="searchable">The searchable.</param>
-        /// <returns></returns>
-        public abstract Solution<T> Search(ISearchable<T> searchable);
     }
 }
