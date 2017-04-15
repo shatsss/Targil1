@@ -30,13 +30,9 @@ namespace Server
             else
             {
                 this.model.DeleteGame(name);
-                stream = game.GetFirstClient().GetStream();
+                stream = game.GetOpponent(client).GetStream();
                 writer = new StreamWriter(stream);
-                writer.WriteLine("the game is closed, close connection!");
-                Console.WriteLine("Server- close connection"); ;
-                stream = game.GetSecondClient().GetStream();
-                writer = new StreamWriter(stream);
-                writer.WriteLine("the game is closed, close connection!");
+                writer.WriteLine("close connection");
                 return "close connection";
             }
 
