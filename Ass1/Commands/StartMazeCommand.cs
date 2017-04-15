@@ -18,8 +18,9 @@ namespace Server
             string name = args[0];
             int rows = int.Parse(args[1]);
             int cols = int.Parse(args[2]);
-            MazeLib.Maze maze = this.model.GetMaze();
-            model.AddWaitingGame(name, rows, cols);
+            MazeLib.Maze maze = this.model.GetMaze(name, rows, cols);
+            Game game = new Game(client, maze);
+            this.model.AddStartGame(game, name);
             return "keep open";
         }
     }

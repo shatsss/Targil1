@@ -4,9 +4,8 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using Ass1;
 using System.IO;
-
+using Newtonsoft.Json;
 
 namespace Server
 {
@@ -35,16 +34,24 @@ namespace Server
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
+
             if (algorithm == 0)
             {
-                writer.WriteLine(model.GetBFSSolution(name).ToJSON());
+                string solution = MazeAdapter.PrintSolution(model.GetBFSSolution(name));
+                writer.WriteLine(model.GetBFSSolution(name).ToJson(solution));
             }
             else
             {
-                writer.WriteLine(model.GetDFSSolution(name).ToJSON());
+                string solution = MazeAdapter.PrintSolution(model.GetDFSSolution(name));
+                writer.WriteLine(model.GetDFSSolution(name).ToJSON(solution));
+
+
             }
+
             writer.Flush();
             return "close connection";
         }
     }
+
+
 }

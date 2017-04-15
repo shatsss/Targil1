@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Ass1
+namespace Server
 {
     /// <summary>
     /// search by bfs.

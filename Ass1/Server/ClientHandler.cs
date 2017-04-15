@@ -1,39 +1,54 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
-using Server;
 using System.Net.Sockets;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Server
 {
-    public class ClientHandler: IClientHandler
+    class ClientHandler : IClientHandler
     {
-            private IController controller;
-            public ClientHandler()
+        private IController controller;
+        public ClientHandler()
+        {
+            controller = new Controller();
+        }
+        public void HandleClient(TcpClient client)
+        {
+            new Task(() =>
             {
-                controller = new Controller();
-            }
-            public void HandleClient(TcpClient client)
-            {
-                new Task(() =>
+
+                using (NetworkStream stream = client.GetStream())
+                using (StreamReader reader = new StreamReader(stream))
+                using (StreamWriter writer = new StreamWriter(stream))
                 {
-
-                    using (NetworkStream stream = client.GetStream())
-                    using (StreamReader reader = new StreamReader(stream))
-                    using (StreamWriter writer = new StreamWriter(stream))
+                    while (true)
                     {
+                        Console.WriteLine("waiting for message...");
                         string commandLine = reader.ReadLine();
-                        Console.WriteLine("Got command: {0}", commandLine);
-                        string result = controller.ExecuteCommand(commandLine, client);
-                        writer.Flush();
-                        writer.Write(result);
 
+                        if (commandLine != null)
+                        {
+                            Console.WriteLine("Got command: {0}", commandLine);
+                            string result = controller.ExecuteCommand(commandLine, client);
+                            Thread.Sleep(100);
+                            if (result == "close connection")
+                            {
+                                writer.Write(result);
+                                writer.Flush();
+                                break;
+                            }
+                            if (result == "keep open")
+                            {
+                                writer.Write(result);
+                                writer.Flush();
+                                continue;
+                            }
+                        }
                     }
-                    //                client.Close();
-                }).Start();
-            }
+                }
+                client.Close();
+            }).Start();
         }
     }
-
-
-
+}

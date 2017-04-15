@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MazeLib;
-
-namespace Ass1
+namespace Server
 {
     /// <summary>
     /// make maze as ISearchable.
@@ -126,7 +125,7 @@ namespace Ass1
         /// Prints the solution.
         /// </summary>
         /// <param name="solution">The solution.</param>
-        public string PrintSolution(Solution<Position> solution)
+        public static string PrintSolution(Solution<Position> solution)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             List<State<Position>> list = solution.GetSolution();
@@ -156,8 +155,9 @@ namespace Ass1
                         list2.Add((int)MazeLib.Direction.Down);
                     }
                 }
+
             }
-            
+
             foreach (int i in list2)
             {
                 sb.Append(i.ToString());

@@ -8,18 +8,19 @@ using MazeGeneratorLib;
 using MazeLib;
 namespace Ass1
 {
-     class Game
+    public class Game
     {
-        TcpClient client;
+        TcpClient client1;
+        TcpClient client2;
         Maze maze;
-        public Game(TcpClient client,Maze maze)
+        public Game(TcpClient client, Maze maze)
         {
-            this.client = client;
+            this.client1 = client;
             this.maze = maze;
         }
-        public void Start()
+        public void Join(TcpClient client)
         {
-        
+            this.client2 = client;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Academy.Collections.Generic;
 
-namespace Ass1
+namespace Server
 {
     /// <summary>
     /// abstract class.

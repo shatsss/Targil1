@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 
 
-namespace Ass1
+namespace Server
 {
     /// <summary>
     /// solution class.

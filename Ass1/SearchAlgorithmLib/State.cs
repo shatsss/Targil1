@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace Ass1
+namespace Server
 {
 
     /// <summary>

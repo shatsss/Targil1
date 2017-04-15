@@ -1,9 +1,10 @@
 ﻿using System;
-using MazeLib;
-using MazeGeneratorLib;
 using System.Collections.Generic;
+using MazeLib;
+using Ass1;
+using MazeGeneratorLib;
 
-namespace Ass1
+namespace Server
 {
     internal class Model : IModel
     {
@@ -11,6 +12,7 @@ namespace Ass1
         private Dictionary<string, Solution<Position>> solutionsBFS;
         private Dictionary<string, Solution<Position>> solutionsDFS;
         private Dictionary<string, Maze> waitingMazes;
+        private Dictionary<string, Game> games;
 
         private ISearcher<Position> BFS;
         private ISearcher<Position> DFS;
@@ -24,6 +26,7 @@ namespace Ass1
             DFS = new DFS<Position>();
 
         }
+
         Maze IModel.GenerateMaze(string name, int rows, int cols)
         {
             Maze maze = this.GetMaze(name, rows, cols);
@@ -74,6 +77,17 @@ namespace Ass1
                 namesList.Add(name);
             }
             return namesList;
+        }
+        public void AddStartGame(Game game, string name)
+        {
+            if (!this.games.ContainsKey(name))
+            {
+                this.games.Add(name, game);
+            }
+            else
+            {
+                Console.WriteLine("the game exist");
+            }
         }
     }
 }
