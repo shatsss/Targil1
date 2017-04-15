@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="SearchAlgorithmLib\AbstractSearchers.cs" />
     <Compile Include="SearchAlgorithmLib\BFS.cs" />
+    <Compile Include="ServerConnection.cs" />
     <Compile Include="Server\ClientHandler.cs" />
     <Compile Include="Server\Controller.cs" />
     <Compile Include="Server\IClientHandler.cs" />

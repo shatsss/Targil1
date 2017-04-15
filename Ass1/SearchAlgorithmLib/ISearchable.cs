@@ -61,6 +61,6 @@ namespace Server
         /// </summary>
         /// <param name="solution">The solution.</param>
         /// <returns></returns>
-        string PrintSolution(Solution<T> solution);
+      //  string PrintSolution(Solution<T> solution);
     }
 }

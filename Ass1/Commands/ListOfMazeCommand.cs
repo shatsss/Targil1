@@ -2,7 +2,6 @@
 using Ass1;
 using System;
 using Newtonsoft.Json;
-using System;
 using System.Net.Sockets;
 using System.IO;
 
@@ -19,11 +18,9 @@ namespace Server
 
         public string Execute(string[] args, TcpClient client = null)
         {
-
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream);
-
             writer.WriteLine(JsonConvert.SerializeObject(model.GetList()));
             writer.Flush();
             return "close connection";

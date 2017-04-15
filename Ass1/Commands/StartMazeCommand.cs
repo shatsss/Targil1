@@ -1,4 +1,5 @@
 ﻿using Ass1;
+using System.IO;
 using System.Net.Sockets;
 
 
@@ -20,7 +21,16 @@ namespace Server
             int cols = int.Parse(args[2]);
             MazeLib.Maze maze = this.model.GetMaze(name, rows, cols);
             Game game = new Game(client, maze);
-            this.model.AddStartGame(game, name);
+            bool exist = this.model.AddStartGame(game, name);
+            if (!exist)
+            {
+                NetworkStream stream = client.GetStream();
+                StreamReader reader = new StreamReader(stream);
+                StreamWriter writer = new StreamWriter(stream);
+                writer.WriteLine("The Game Is Exist!");
+                writer.Flush();
+                return "close connection";
+            }
             return "keep open";
         }
     }

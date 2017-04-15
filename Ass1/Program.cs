@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,10 @@ namespace Server
     {
         static void Main(string[] args)
         {
+            IClientHandler ch = new ClientHandler();
+            ServerConnection s = new ServerConnection(8000, ch);
+            s.Start();
+            Console.ReadKey();
         }
     }
 }

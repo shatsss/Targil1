@@ -38,7 +38,7 @@ namespace Server
         public Solution(List<State<T>> listSolution, int number, string name)
         {
             this.solutionList = listSolution;
-            this.numberOfStepst = this.solutionList.Count() - 1;
+            this.numberOfStepst = this.solutionList.Count();
             this.numberOfStepsCalculate = number;
             this.name = name;
         }
@@ -83,9 +83,13 @@ namespace Server
             //      Console.WriteLine(i.ToString());
             //  }
         }
-        public string ToJSON()
+       /* public string ToJSON()
         {
             return "TOJSON SOLUTION";
+        }*/
+        public int GetNumberEvaluated()
+        {
+            return this.numberOfStepst;
         }
     }
 }
